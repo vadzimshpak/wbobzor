@@ -1,0 +1,241 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.site-layout {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background-color: var(--background);
+  background-image: var(--site-accent-mesh);
+}
+
+.site-layout__main {
+  flex: 1;
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 2rem;
+
+  @include from-sm {
+    padding: 1.5rem 1.5rem 2.5rem;
+  }
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-header-bg);
+  -webkit-backdrop-filter: var(--header-backdrop-blur);
+  backdrop-filter: var(--header-backdrop-blur);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.875rem 1rem;
+
+  @include from-sm {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+  }
+}
+
+.site-header__end {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+
+  @include from-sm {
+    width: auto;
+    flex-shrink: 0;
+    justify-content: flex-end;
+  }
+}
+
+.site-header__logo {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    color: $color-accent;
+  }
+}
+
+.site-header__nav {
+  flex: 1;
+  min-width: 0;
+
+  @include from-sm {
+    flex: 0 1 auto;
+    width: auto;
+  }
+}
+
+.site-header__vk {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: var(--color-card-bg);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background-color 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+}
+
+.site-header__vk-icon {
+  display: block;
+}
+
+.site-header__theme-toggle {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover:not(:disabled) {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: default;
+  }
+}
+
+.site-header__theme-icon {
+  display: block;
+}
+
+.site-header__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-header__item {
+  margin: 0;
+}
+
+.site-header__link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    color: $color-accent;
+  }
+}
+
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-footer-bg);
+}
+
+.site-footer__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.25rem 1rem;
+
+  @include from-sm {
+    padding: 1.5rem 1.5rem;
+  }
+}
+
+.site-footer__row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+
+  @include from-sm {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}
+
+.site-footer__copy {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.site-footer__link {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+
+  &:hover,
+  &:focus-visible {
+    color: $color-accent;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}

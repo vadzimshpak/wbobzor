@@ -1,0 +1,35 @@
+@use "sass:color";
+
+// --- Бренд: primary (графит), accent (вишня) ---
+$color-primary: #2f3238;
+$color-primary-soft: #3d4249;
+$color-accent: #971ca5;
+$color-accent-hover: #c428a5;
+$color-accent-hover-dark-scheme: #c43dab;
+
+// --- Светлая тема ---
+$color-surface-page: #ececee;
+$color-surface-card: #f8f8f9;
+$color-surface-footer: #e2e3e6;
+$color-foreground-on-light: #1a1c20;
+$color-text-muted-on-light: #5c6169;
+
+// --- Тёмная тема ---
+$color-surface-page-dark: #1b1d22;
+$color-surface-card-dark: #22252c;
+$color-surface-footer-dark: #14161a;
+$color-foreground-on-dark: #e8e9ec;
+$color-text-muted-on-dark: #9a9ea6;
+
+// --- Производные от primary / нейтрали ---
+$color-border-on-light: color.change($color-primary, $alpha: 0.12);
+$color-border-on-dark: color.change(#ffffff, $alpha: 0.1);
+// Ниже альфа — сильнее просвечивает контент под шапкой и заметнее backdrop-blur
+$color-header-bg-light: color.change($color-surface-page, $alpha: 0.72);
+$color-header-bg-dark: color.change($color-surface-page-dark, $alpha: 0.72);
+$color-card-shadow-hover: color.change($color-primary, $alpha: 0.08);
+
+// --- Брейкпоинты ---
+$breakpoint-sm: 40rem; // 640px
+$breakpoint-md: 48rem; // 768px
+$breakpoint-lg: 64rem; // 1024px — сетка feed

@@ -1,0 +1,72 @@
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
+
+/* Как на сайте: тема через data-theme на <html>, а не prefers-color-scheme */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/*
+ * Классы из HTML постов (БД) не попадают в скан исходников.
+ * 1) @source inline — частые утилиты и диапазоны.
+ * 2) post-body-tailwind-registry.html — добавляйте классы вручную (в т.ч. arbitrary).
+ */
+@source "../lib/post-body-tailwind-registry.html";
+
+@source inline("block inline-block inline flex inline-flex grid table table-row table-cell flow-root hidden");
+@source inline("flex-row flex-col flex-wrap flex-nowrap");
+@source inline("items-start items-end items-center items-baseline items-stretch");
+@source inline("justify-start justify-end justify-center justify-between justify-around justify-evenly");
+@source inline("content-start content-end content-center content-between");
+@source inline("self-auto self-start self-end self-center self-stretch");
+@source inline("flex-1 flex-auto flex-initial flex-none shrink shrink-0 grow grow-0");
+@source inline("order-first order-last order-none");
+@source inline("gap-{0,1,2,3,4,5,6,8,10,12,16,20,24}");
+@source inline("space-x-{0,1,2,3,4,6,8} space-y-{0,1,2,3,4,6,8}");
+@source inline("w-full w-screen w-auto w-min w-max w-fit min-w-0 min-w-full max-w-none max-w-full max-w-screen");
+@source inline("h-full h-screen h-auto h-min h-max h-fit min-h-0 min-h-full max-h-full");
+@source inline("p-{0..24} m-{0..24}");
+@source inline("px-{0..16} py-{0..16} pt-{0..16} pr-{0..16} pb-{0..16} pl-{0..16}");
+@source inline("mx-{0..16} my-{0..16} mt-{0..16} mr-{0..16} mb-{0..16} ml-{0..16}");
+@source inline("text-left text-center text-right text-justify text-start text-end");
+@source inline("align-baseline align-top align-middle align-bottom align-text-top align-text-bottom");
+@source inline("text-xs text-sm text-base text-lg text-xl text-2xl text-3xl text-4xl");
+@source inline("font-thin font-extralight font-light font-normal font-medium font-semibold font-bold font-extrabold font-black");
+@source inline("italic not-italic underline line-through no-underline");
+@source inline("uppercase lowercase capitalize normal-case");
+@source inline("truncate text-ellipsis text-clip overflow-hidden overflow-auto overflow-x-auto overflow-y-auto");
+@source inline("whitespace-normal whitespace-nowrap whitespace-pre whitespace-pre-line whitespace-pre-wrap");
+@source inline("break-normal break-words break-all");
+@source inline("rounded-none rounded-sm rounded rounded-md rounded-lg rounded-xl rounded-2xl rounded-3xl rounded-full");
+@source inline("border border-0 border-2 border-4 border-8 border-solid border-dashed border-dotted border-double border-hidden");
+@source inline("divide-y divide-x divide-solid divide-dashed");
+@source inline("ring ring-0 ring-1 ring-2 ring-4 ring-8 ring-inset");
+@source inline("shadow-sm shadow shadow-md shadow-lg shadow-xl shadow-2xl shadow-inner shadow-none");
+@source inline("opacity-{0,5,10,20,25,30,40,50,60,70,75,80,90,95,100}");
+@source inline("z-0 z-10 z-20 z-30 z-40 z-50 z-auto");
+@source inline("list-none list-disc list-decimal list-inside list-outside");
+@source inline("grid-cols-{1..12} col-span-{1..12} col-span-full col-start-auto row-start-auto");
+@source inline("grid-rows-{1..6} row-span-{1..6} row-span-full");
+@source inline("gap-x-{0,1,2,3,4,5,6,8} gap-y-{0,1,2,3,4,5,6,8}");
+@source inline("{sm:,md:,lg:,xl:,2xl:,}flex {sm:,md:,lg:,xl:,}grid {sm:,md:,lg:,xl:,}hidden {sm:,md:,lg:,xl:,}block");
+@source inline("{sm:,md:,lg:,xl:,}text-left {sm:,md:,lg:,xl:,}text-center {sm:,md:,lg:,xl:,}p-{4,6,8} {sm:,md:,lg:,xl:,}gap-4");
+
+@source inline("text-slate-{50,100,200,300,400,500,600,700,800,900,950}");
+@source inline("bg-slate-{50,100,200,300,400,500,600,700,800,900,950}");
+@source inline("text-gray-{50,100,200,300,400,500,600,700,800,900,950}");
+@source inline("bg-gray-{50,100,200,300,400,500,600,700,800,900,950}");
+@source inline("text-zinc-{50,100,200,300,400,500,600,700,800,900,950}");
+@source inline("bg-zinc-{50,100,200,300,400,500,600,700,800,900,950}");
+@source inline("text-neutral-{50,100,200,300,400,500,600,700,800,900,950}");
+@source inline("bg-neutral-{50,100,200,300,400,500,600,700,800,900,950}");
+@source inline("text-stone-{50,100,200,300,400,500,600,700,800,900,950}");
+@source inline("bg-stone-{50,100,200,300,400,500,600,700,800,900,950}");
+@source inline("border-slate-{100,200,300,400,500,600,700,800}");
+@source inline("border-gray-{100,200,300,400,500,600,700,800}");
+@source inline("border-zinc-{100,200,300,400,500,600,700,800}");
+@source inline("ring-slate-{200,300,400,500} ring-gray-{200,300,400,500}");
+@source inline("{dark:,}text-white {dark:,}text-black {dark:,}bg-white {dark:,}bg-black");
+@source inline("{dark:,}text-slate-{100,200,300,400,500,600,700,800,900}");
+@source inline("{dark:,}bg-slate-{800,900,950} {dark:,}bg-gray-{800,900,950}");
+@source inline("from-slate-{50,100,900} to-slate-{50,100,900} via-slate-{100,500}");
+@source inline("bg-gradient-to-t bg-gradient-to-tr bg-gradient-to-r bg-gradient-to-br bg-gradient-to-b");
+
+@source inline("float-left float-right float-none");

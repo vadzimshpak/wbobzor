@@ -1,0 +1,77 @@
+@use "sass:color";
+@use "variables" as *;
+
+@mixin theme-light {
+  --color-primary: #{$color-primary};
+  --color-primary-soft: #{$color-primary-soft};
+  --color-accent: #{$color-accent};
+  --color-accent-hover: #{$color-accent-hover};
+  --background: #{$color-surface-page};
+  --foreground: #{$color-foreground-on-light};
+  --color-text: var(--color-primary);
+  --color-text-muted: #{$color-text-muted-on-light};
+  --color-border: #{$color-border-on-light};
+  --color-header-bg: #{$color-header-bg-light};
+  --header-backdrop-blur: blur(14px) saturate(1.2);
+  --color-footer-bg: #{$color-surface-footer};
+  --color-card-bg: #{$color-surface-card};
+  --site-accent-mesh: linear-gradient(
+    158deg,
+    #{color.change($color-accent, $alpha: 0.055)} 0%,
+    transparent 42%,
+    #{color.change($color-accent, $alpha: 0.04)} 72%,
+    transparent 100%
+  );
+}
+
+@mixin theme-dark {
+  --color-primary: #{$color-primary};
+  --color-primary-soft: #{$color-primary-soft};
+  --color-accent: #{$color-accent};
+  --color-accent-hover: #{$color-accent-hover-dark-scheme};
+  --background: #{$color-surface-page-dark};
+  --foreground: #{$color-foreground-on-dark};
+  --color-text: #{$color-foreground-on-dark};
+  --color-text-muted: #{$color-text-muted-on-dark};
+  --color-border: #{$color-border-on-dark};
+  --color-header-bg: #{$color-header-bg-dark};
+  --header-backdrop-blur: blur(16px) saturate(1.25);
+  --color-footer-bg: #{$color-surface-footer-dark};
+  --color-card-bg: #{$color-surface-card-dark};
+  --site-accent-mesh:
+    radial-gradient(
+      ellipse 120% 70% at 100% -5%,
+      #{color.change($color-accent, $alpha: 0.32)} 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 90% 55% at -5% 105%,
+      #{color.change($color-accent-hover-dark-scheme, $alpha: 0.2)} 0%,
+      transparent 52%
+    ),
+    linear-gradient(
+      168deg,
+      #{color.change($color-accent, $alpha: 0.1)} 0%,
+      transparent 32%,
+      transparent 58%,
+      #{color.change($color-primary-soft, $alpha: 0.35)} 100%
+    );
+}
+
+html {
+  @include theme-light;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) {
+    @include theme-dark;
+  }
+}
+
+html[data-theme="light"] {
+  @include theme-light;
+}
+
+html[data-theme="dark"] {
+  @include theme-dark;
+}

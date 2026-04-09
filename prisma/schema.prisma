@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model FeedArticle {
+  id            String   @id
+  slug          String   @unique
+  title         String
+  excerpt       String
+  /// Полный текст публикации (в БД колонка `text` — имя `text` зарезервировано в API Prisma)
+  body          String   @default("") @map("text")
+  publishedAt   DateTime
+  gridCol       Int
+  gridRow       Int
+  /// Обложка поста (JPEG/PNG и т.д.)
+  coverImage    Bytes?
+  coverImageAlt String?
+  /// Показывать обложку в ленте на главной
+  showCoverOnHome Boolean @default(false)
+  /// Опубликован на сайте; false — черновик (скрыт с ленты и из списка постов)
+  active            Boolean  @default(true)
+
+  bodyImages ArticleBodyImage[]
+
+  @@map("feed_articles")
+}
+
+/// Иллюстрации к телу поста (для вставки в HTML по URL), хранятся как blob
+model ArticleBodyImage {
+  id        String   @id
+  articleId String
+  article   FeedArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  mimeType  String
+  data      Bytes
+  createdAt DateTime @default(now())
+
+  @@index([articleId])
+  @@map("article_body_images")
+}
