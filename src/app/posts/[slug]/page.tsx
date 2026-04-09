@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { hasAdminAccess } from "@/lib/admin-access";
-import { getAllPostSlugs, getPostBySlug } from "@/lib/post-db";
+import { getPostBySlug } from "@/lib/post-db";
 import { SiteLayout } from "@/lib/layout";
 import { sanitizePostBodyHtml } from "@/lib/post-body-html";
 import { getSiteUrl } from "@/lib/site";
@@ -13,17 +13,19 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+/**
+ * Страница зависит от cookies (админ-доступ) и может отдавать черновики.
+ * Поэтому отключаем SSG и рендерим динамически.
+ */
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 function formatPublished(d: Date): string {
   return d.toLocaleDateString("ru-RU", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
-}
-
-export async function generateStaticParams() {
-  const rows = await getAllPostSlugs();
-  return rows.map((row: { slug: string }) => ({ slug: row.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
