@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const YANDEX_METRIKA_ID = 108392839;
+const YANDEX_METRIKA_ID = 108470046;
 
 export function YandexMetrika() {
   const inlineInit = `
