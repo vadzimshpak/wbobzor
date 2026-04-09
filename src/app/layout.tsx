@@ -19,8 +19,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "вб обзор — обзоры товаров Wildberries",
-    template: "%s — вб обзор",
+    default: "ВБ обзор — обзоры товаров Wildberries",
+    template: "%s — ВБ обзор",
   },
   description:
     "Обзоры товаров с Wildberries: честные впечатления, плюсы и минусы, сравнения и подборки.",
