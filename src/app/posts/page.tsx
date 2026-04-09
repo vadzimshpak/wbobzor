@@ -8,10 +8,17 @@ import { getPostsIndexPage } from "@/lib/post-db";
 
 import { PostPager } from "./PostPager";
 
+/**
+ * Страница зависит от cookies (админ-доступ) и может делать redirect по query,
+ * поэтому рендерим только динамически.
+ */
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: "Все посты",
   description:
-    "Список статей о нейросетях, машинном обучении и практическом применении ИИ.",
+    "Список обзоров и подборок товаров с Wildberries.",
 };
 
 type Props = {
